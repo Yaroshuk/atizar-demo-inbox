@@ -125,6 +125,27 @@ The whole framework comes from npm: [`@atizar/core`](https://www.npmjs.com/packa
 the **userland** — the workflow policy and the UI cards. To build your own workflow on top, see
 **[AGENTS.md](AGENTS.md)**.
 
+## Coding-agent skills (from the packages)
+
+The `@atizar/*` packages ship **skills** for AI coding agents inside them — `add-workflow`
+(in `@atizar/core`, scaffolds a whole workflow end-to-end) and `gmail` (in `@atizar/integrations`).
+This repo surfaces them with [`skills-npm`](https://github.com/antfu/skills-npm): a `prepare` script
+runs on every `npm install` and **symlinks each package's skill into `skills/npm-<package>-<skill>/`**
+(gitignored, regenerated each install — nothing to commit).
+
+So right after `npm install` you'll have:
+
+```
+skills/
+├── npm-atizar-core-add-workflow/   → @atizar/core's add-workflow skill
+└── npm-atizar-integrations-gmail/  → @atizar/integrations' gmail skill
+```
+
+Point your coding agent at that folder (or open the `SKILL.md` inside directly). To add skills from
+another package, just install a package that ships a `skills/` dir — `skills-npm` picks it up on the
+next install. (Wiring lives in `package.json` → `"prepare": "skills-npm"` + the `**/skills/npm-*`
+gitignore entry.)
+
 ## Scripts
 
 | Command                   | What it does                                                |
