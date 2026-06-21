@@ -1,4 +1,4 @@
-# atizar-inbox
+# atizar-demo-inbox
 
 A **runnable example** built on the [Atizar](https://atizar.io) framework — installed from npm
 (`@atizar/*`), not vendored. An email-inbox automation: a **sorter** agent reads unread mail and
