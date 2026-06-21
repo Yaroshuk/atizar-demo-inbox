@@ -1,7 +1,7 @@
 # atizar-demo-inbox
 
-A **runnable example** built on the [Atizar](https://atizar.io) framework — installed from npm
-(`@atizar/*`), not vendored. An email-inbox automation: a **sorter** agent reads unread mail and
+A **runnable example** built on the [Atizar](https://atizar.io) framework
+([source](https://github.com/Yaroshuk/atizar)) — installed from npm (`@atizar/*`), not vendored. An email-inbox automation: a **sorter** agent reads unread mail and
 routes each message to a **reply**, **reader**, **spam**, or **important** agent. Every
 consequential action (saving a draft, starring, trashing) waits behind an **approval gate** — the
 agent proposes, you approve, the server acts.
@@ -121,8 +121,9 @@ demo-cassettes/          committed synthetic recordings that power `npm run demo
 ```
 
 The whole framework comes from npm: [`@atizar/core`](https://www.npmjs.com/package/@atizar/core),
-`@atizar/providers`, `@atizar/server`, `@atizar/react`, `@atizar/integrations`. This repo is only
-the **userland** — the workflow policy and the UI cards. To build your own workflow on top, see
+`@atizar/providers`, `@atizar/server`, `@atizar/react`, `@atizar/integrations` — source at
+**[github.com/Yaroshuk/atizar](https://github.com/Yaroshuk/atizar)**. This repo is only the
+**userland** — the workflow policy and the UI cards. To build your own workflow on top, see
 **[AGENTS.md](AGENTS.md)**.
 
 ## Coding-agent skills (from the packages)
