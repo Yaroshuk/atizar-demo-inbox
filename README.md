@@ -55,7 +55,7 @@ default — so with the standard `docker compose up` you set nothing.
 | `ATIZAR_SECRET_KEY`                                        | any OAuth integration | AES master key for the **encrypted credential store**. Any strong random string (`openssl rand -hex 32`). Per-user tokens are encrypted with it.                                                                     |
 | `ANTHROPIC_API_KEY`                                        | production provider   | Anthropic API key, used when `PROVIDER=mastra`. (Vendor convention — **not** namespaced.)                                                                                                                            |
 | `ATIZAR_GOOGLE_CLIENT_ID`<br>`ATIZAR_GOOGLE_CLIENT_SECRET` | Gmail                 | One-time OAuth app from **Google Cloud Console → APIs & Services → Credentials → OAuth client ID** (enable the Gmail API). The per-user token is obtained later via the in-app **Connect** button — not pasted here. |
-| `ATIZAR_AUTH_TOKEN`                                        | recommended           | Shared bearer token guarding all mutation routes.                                                                                                                                                                    |
+| `ATIZAR_AUTH_TOKEN`                                        | deploy only           | Shared bearer token guarding mutation routes. **Skip it locally** (see the auth note below) — set it only when exposing the server, and pair it with `VITE_ATIZAR_AUTH_TOKEN` (same value) so the client sends it.   |
 
 Choose a provider:
 
@@ -68,13 +68,15 @@ the CLI authenticates through your Claude Code subscription in the macOS keychai
 
 A minimal `.env.local` for a real Gmail run **with `mastra`** (production):
 
+> The file MUST be named **`.env.local`** (not `.env`) — that's the only name the server's dev
+> autoloader reads.
+
 ```bash
 ATIZAR_SECRET_KEY=<openssl rand -hex 32>
 PROVIDER=mastra
 ANTHROPIC_API_KEY=sk-ant-...
 ATIZAR_GOOGLE_CLIENT_ID=...apps.googleusercontent.com
 ATIZAR_GOOGLE_CLIENT_SECRET=...
-ATIZAR_AUTH_TOKEN=<openssl rand -hex 32>
 # DATABASE_URL defaults to the docker-compose Postgres — leave unset for the standard setup
 ```
 
@@ -86,12 +88,15 @@ PROVIDER=claude-cli
 # NO ANTHROPIC_API_KEY — claude-cli signs in via your Claude Code subscription (macOS keychain)
 ATIZAR_GOOGLE_CLIENT_ID=...apps.googleusercontent.com
 ATIZAR_GOOGLE_CLIENT_SECRET=...
-ATIZAR_AUTH_TOKEN=<openssl rand -hex 32>
 # DATABASE_URL defaults to the docker-compose Postgres — leave unset for the standard setup
 ```
 
 Requires the `claude` CLI installed and logged in (`claude` once, interactively). It spawns the
 binary per run, so it's for local dev, not production.
+
+> **Don't set `ATIZAR_AUTH_TOKEN` locally.** It turns on bearer-token auth for every mutation; the
+> client only sends a token if `VITE_ATIZAR_AUTH_TOKEN` is **also** set to the same value — otherwise
+> every action returns `401 Unauthorized`. Use it only when deploying, and set **both** vars.
 
 ### 3. Run & connect
 
