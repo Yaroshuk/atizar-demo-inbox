@@ -63,7 +63,10 @@ Choose a provider:
 - **`PROVIDER=claude-cli`** — dev only (macOS). Uses your local Claude Code **subscription** via the
   keychain — no API key — but spawns the `claude` binary, so it's not for production.
 
-A minimal `.env.local` for a real Gmail run:
+`ANTHROPIC_API_KEY` is only for `PROVIDER=mastra`. With `PROVIDER=claude-cli` you don't set it —
+the CLI authenticates through your Claude Code subscription in the macOS keychain.
+
+A minimal `.env.local` for a real Gmail run **with `mastra`** (production):
 
 ```bash
 ATIZAR_SECRET_KEY=<openssl rand -hex 32>
@@ -74,6 +77,21 @@ ATIZAR_GOOGLE_CLIENT_SECRET=...
 ATIZAR_AUTH_TOKEN=<openssl rand -hex 32>
 # DATABASE_URL defaults to the docker-compose Postgres — leave unset for the standard setup
 ```
+
+Or **with `claude-cli`** (local dev on macOS — no API key, uses your Claude Code subscription):
+
+```bash
+ATIZAR_SECRET_KEY=<openssl rand -hex 32>
+PROVIDER=claude-cli
+# NO ANTHROPIC_API_KEY — claude-cli signs in via your Claude Code subscription (macOS keychain)
+ATIZAR_GOOGLE_CLIENT_ID=...apps.googleusercontent.com
+ATIZAR_GOOGLE_CLIENT_SECRET=...
+ATIZAR_AUTH_TOKEN=<openssl rand -hex 32>
+# DATABASE_URL defaults to the docker-compose Postgres — leave unset for the standard setup
+```
+
+Requires the `claude` CLI installed and logged in (`claude` once, interactively). It spawns the
+binary per run, so it's for local dev, not production.
 
 ### 3. Run & connect
 
