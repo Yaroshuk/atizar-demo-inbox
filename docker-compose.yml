@@ -1,0 +1,18 @@
+# Postgres for the SELF-HOST path (running against your own Gmail). The default connection
+# string in @atizar/server matches these creds, so `docker compose up -d` needs no env file.
+# The zero-credential demo (`npm run demo`) does NOT need this — it uses an in-memory database.
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aiworkflow
+      POSTGRES_PASSWORD: aiworkflow
+      POSTGRES_DB: aiworkflow
+    ports:
+      - '5432:5432'
+    volumes:
+      - atizar_inbox_pg:/var/lib/postgresql/data
+
+volumes:
+  atizar_inbox_pg:

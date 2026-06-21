@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+.DS_Store
+*.log
+.env
+.env.local
+.vite/
+coverage/
+*.tsbuildinfo
+.playwright-mcp/
+test-results/
+playwright-report/
+# Real captured email/ticket recordings — NEVER commit. (Synthetic demo-cassettes/ ARE committed.)
+.cassettes/
+e2e-*.png
