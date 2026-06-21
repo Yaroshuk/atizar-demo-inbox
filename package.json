@@ -1,5 +1,5 @@
 {
-  "name": "atizar-inbox",
+  "name": "atizar-demo-inbox",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -26,11 +26,11 @@
   "dependencies": {
     "@ag-ui/client": "^0.0.55",
     "@ai-sdk/anthropic": "^3.0.82",
-    "@atizar/core": "file:../../../../private/tmp/claude-501/-Users-yaroshuk-Development-AiWorkflow/22d75b97-2990-4092-8402-33abaacf7665/scratchpad/tarballs/atizar-core-0.1.1.tgz",
-    "@atizar/integrations": "file:../../../../private/tmp/claude-501/-Users-yaroshuk-Development-AiWorkflow/22d75b97-2990-4092-8402-33abaacf7665/scratchpad/tarballs/atizar-integrations-0.1.1.tgz",
-    "@atizar/providers": "file:../../../../private/tmp/claude-501/-Users-yaroshuk-Development-AiWorkflow/22d75b97-2990-4092-8402-33abaacf7665/scratchpad/tarballs/atizar-providers-0.1.1.tgz",
-    "@atizar/react": "file:../../../../private/tmp/claude-501/-Users-yaroshuk-Development-AiWorkflow/22d75b97-2990-4092-8402-33abaacf7665/scratchpad/tarballs/atizar-react-0.1.1.tgz",
-    "@atizar/server": "file:../../../../private/tmp/claude-501/-Users-yaroshuk-Development-AiWorkflow/22d75b97-2990-4092-8402-33abaacf7665/scratchpad/tarballs/atizar-server-0.1.1.tgz",
+    "@atizar/core": "^0.1.1",
+    "@atizar/integrations": "^0.1.1",
+    "@atizar/providers": "^0.1.1",
+    "@atizar/react": "^0.1.1",
+    "@atizar/server": "^0.1.1",
     "@electric-sql/pglite": "^0.2.17",
     "@hono/node-server": "^2.0.4",
     "@mastra/core": "^1.41.0",
