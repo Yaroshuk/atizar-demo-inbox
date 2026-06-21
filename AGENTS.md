@@ -40,8 +40,13 @@ the three aggregators: `workflows/index.ts`, `server/workflows.ts`, `client/src/
 - Operator-tunable values (windows, limits, thresholds) are **typed config parameters**, never magic
   numbers buried in prompt prose.
 
-The framework ships an `add-workflow` skill (in the `@atizar/core` package) that scaffolds all of
-this — use it if your harness exposes package skills.
+### Skills shipped with the framework
+
+The `@atizar/*` packages ship coding-agent skills inside them — `add-workflow` (in `@atizar/core`,
+scaffolds a whole workflow) and `gmail` (in `@atizar/integrations`). This repo wires
+[`skills-npm`](https://github.com/antfu/skills-npm) via the `prepare` script, so **`npm install`
+symlinks those skills into `skills/npm-<package>-<skill>/`** (gitignored, regenerated each install).
+Point your agent at them, or open `skills/npm-atizar-core-add-workflow/SKILL.md` directly.
 
 ## Verifying your change
 

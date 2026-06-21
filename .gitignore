@@ -14,3 +14,5 @@ playwright-report/
 # Real captured email/ticket recordings — NEVER commit. (Synthetic demo-cassettes/ ARE committed.)
 .cassettes/
 e2e-*.png
+# Agent skills symlinked from @atizar/* packages by skills-npm (prepare hook) — generated, not committed.
+**/skills/npm-*
