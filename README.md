@@ -165,6 +165,14 @@ Effect tools bind to server-side functions the model never sees and run through 
 **exactly once, only after you approve**. A jailbroken prompt still cannot fire an action. Stop one
 agent, one workflow, or everything, at any moment.
 
+## Contact & feedback
+
+Feedback, ideas, and proposals are very welcome — reach out any time:
+
+- **Email:** [yaroshukmail@gmail.com](mailto:yaroshukmail@gmail.com)
+- **Telegram:** [@yaroshuk](https://t.me/yaroshuk)
+- **LinkedIn:** [in/syaroshuk](https://www.linkedin.com/in/syaroshuk)
+
 ## License
 
 [MIT](LICENSE). Built on [atizar.io](https://atizar.io).
